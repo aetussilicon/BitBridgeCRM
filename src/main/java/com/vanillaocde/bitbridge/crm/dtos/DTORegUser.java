@@ -9,15 +9,13 @@ public record DTORegUser(
         String name,
 
         @NotBlank
-        String surName,
+        String sur_name,
 
         @Email
+        @NotBlank
         String email,
 
         @NotBlank
-        String password,
-
-        @NotBlank
-        String companyPhone
+        String password
 ) {
 }

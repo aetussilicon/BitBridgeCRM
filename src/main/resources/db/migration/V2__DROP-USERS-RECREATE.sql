@@ -1,0 +1,9 @@
+DROP TABLE users;
+
+CREATE TABLE users (
+    gsid VARCHAR(10) PRIMARY KEY UNIQUE,
+    name VARCHAR (50) NOT NULL,
+    sur_name VARCHAR (50) NOT NULL,
+    email VARCHAR (255) NOT NULL UNIQUE,
+    password VARCHAR (50) NOT NULL
+);

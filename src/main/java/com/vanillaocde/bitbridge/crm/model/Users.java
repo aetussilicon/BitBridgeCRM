@@ -3,10 +3,8 @@ package com.vanillaocde.bitbridge.crm.model;
 import com.vanillaocde.bitbridge.crm.dtos.DTORegUser;
 import com.vanillaocde.bitbridge.crm.services.UserId;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Table (name = "users")
 @Entity
@@ -14,21 +12,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode (of = "gsid")
+@Setter
 public class Users {
 
-    @EmbeddedId
-    private UserId gsid;
+    @Id
+    @GenericGenerator(name = "gsid", strategy = "com.vanillaocde.bitbridge.crm.services.UserId")
+    @GeneratedValue(generator = "gsid")
+    @Column(name = "gsid")
+    private String gsid;
     private String name;
     private String surName;
     private String email;
     private String password;
-    private String companyPhone;
 
     public Users(DTORegUser data) {
         this.name = data.name();
-        this.surName = data.surName();
+        this.surName = data.sur_name();
         this.email = data.email();
         this.password = data.password();
-        this.companyPhone = data.companyPhone();
     }
 }

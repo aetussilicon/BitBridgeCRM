@@ -1,24 +1,23 @@
 package com.vanillaocde.bitbridge.crm.services;
 
 import jakarta.persistence.Embeddable;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.id.IdentifierGenerator;
 
 import java.io.Serializable;
 import java.util.Random;
 
-@Embeddable
-public class UserId implements Serializable {
 
-    private String gsid;
-    public String generatedId () {
+public class UserId implements IdentifierGenerator {
 
-        Random rand = new Random();
-        int rand1 = rand.nextInt(8);
-        String prefix = "UN";
-        String id = prefix + rand1;
-        return id;
-    }
+    @Override
+    public Object generate(SharedSessionContractImplementor session, Object object) {
 
-    public UserId (String gsid) {
-        this.gsid = generatedId();
+       String prefix = "UN";
+       Random random = new Random();
+       int randomNumber = random.nextInt(011111111, 99999999);
+       String generatedId = prefix + randomNumber;
+
+        return generatedId;
     }
 }
