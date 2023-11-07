@@ -15,9 +15,8 @@ public class UserId implements IdentifierGenerator {
 
        String prefix = "UN";
        Random random = new Random();
-       int randomNumber = random.nextInt(011111111, 99999999);
-       String generatedId = prefix + randomNumber;
+       int randomNumber = random.nextInt(10000000, 99999999);
 
-        return generatedId;
+        return prefix + randomNumber;
     }
 }

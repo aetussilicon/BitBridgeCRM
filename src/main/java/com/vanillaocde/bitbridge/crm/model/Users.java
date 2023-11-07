@@ -1,7 +1,6 @@
 package com.vanillaocde.bitbridge.crm.model;
 
 import com.vanillaocde.bitbridge.crm.dtos.DTORegUser;
-import com.vanillaocde.bitbridge.crm.services.UserId;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,11 +23,14 @@ public class Users {
     private String surName;
     private String email;
     private String password;
+    private String username;
 
     public Users(DTORegUser data) {
         this.name = data.name();
         this.surName = data.sur_name();
         this.email = data.email();
         this.password = data.password();
+        this.username = data.setUsername();
     }
+
 }
