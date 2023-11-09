@@ -1,2 +1,4 @@
-package com.vanillaocde.bitbridge.crm.model;public interface CompanyRepository {
+package com.vanillaocde.bitbridge.crm.repositories;
+
+public interface CompanyRepository {
 }

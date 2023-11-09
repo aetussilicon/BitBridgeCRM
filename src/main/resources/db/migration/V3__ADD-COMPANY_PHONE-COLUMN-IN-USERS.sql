@@ -1,0 +1,2 @@
+ALTER TABLE users
+ADD COLUMN company_phone VARCHAR (13) NOT NULL;

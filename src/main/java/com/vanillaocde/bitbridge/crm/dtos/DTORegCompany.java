@@ -1,4 +1,4 @@
-package com.vanillaocde.bitbridge.crm.services;
+package com.vanillaocde.bitbridge.crm.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 

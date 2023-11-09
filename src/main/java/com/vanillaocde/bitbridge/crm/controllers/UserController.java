@@ -1,6 +1,6 @@
 package com.vanillaocde.bitbridge.crm.controllers;
 
-import com.vanillaocde.bitbridge.crm.dtos.DTORegUser;
+import  com.vanillaocde.bitbridge.crm.dtos.DTORegUser;
 import com.vanillaocde.bitbridge.crm.model.Users;
 import com.vanillaocde.bitbridge.crm.repositories.UserRepository;
 import jakarta.validation.Valid;
@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("auth/users")
+@RequestMapping("auth")
 public class UserController {
 
     @Autowired
     UserRepository repository;
 
     @PostMapping
+    @RequestMapping("/register")
     public void regUser(@RequestBody @Valid DTORegUser data){
         repository.save(new Users(data));
     }

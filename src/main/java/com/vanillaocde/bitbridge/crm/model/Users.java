@@ -24,6 +24,7 @@ public class Users {
     private String email;
     private String password;
     private String username;
+    private String company_phone;
 
     public Users(DTORegUser data) {
         this.name = data.name();
@@ -31,6 +32,7 @@ public class Users {
         this.email = data.email();
         this.password = data.password();
         this.username = data.setUsername();
+        this.company_phone = data.company_phone();
     }
 
 }
