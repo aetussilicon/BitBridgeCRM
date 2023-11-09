@@ -1,5 +1,6 @@
 package com.vanillaocde.bitbridge.crm.model;
 
+import com.vanillaocde.bitbridge.crm.dtos.DTORegCompany;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 @Table (name = "companies")
-@Entity
+@Entity (name = "company")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,4 +30,16 @@ public class Company {
     private String country;
     private String website;
     private String channel;
+
+    public Company(DTORegCompany data) {
+        this.razaoSocial = data.razao_social();
+        this.cnpj = data.cnpj();
+        this.industry = data.industry();
+        this.address = data.address();
+        this.city = data.city();
+        this.postalCode = data.postal_code();
+        this.country = data.country();
+        this.website = data.website();
+        this.channel = data.channel();
+    }
 }

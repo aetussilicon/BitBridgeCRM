@@ -1,14 +1,14 @@
 package com.vanillaocde.bitbridge.crm.services;
 
-import com.vanillaocde.bitbridge.crm.dtos.DTORegCompany;
-import com.vanillaocde.bitbridge.crm.dtos.DTORegUser;
+import com.vanillaocde.bitbridge.crm.model.Company;
+import com.vanillaocde.bitbridge.crm.model.Users;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
 
 import java.util.Random;
 
 
-public class UserId implements IdentifierGenerator {
+public class IdGeneratorService implements IdentifierGenerator {
 
     @Override
     public Object generate(SharedSessionContractImplementor session, Object object) {
@@ -23,11 +23,8 @@ public class UserId implements IdentifierGenerator {
                 prefix = "EP";
                 break;
             default:
-                try {
-                    throw new IllegalAccessException("Tipo de entidade desconhecida:" + entityType);
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                }
+                return new IllegalArgumentException("A entidade " + entityType + "é desconhecida");
+
         }
         //String prefix = "UN";
         Random random = new Random();
@@ -37,9 +34,9 @@ public class UserId implements IdentifierGenerator {
     }
 
     private String determineEntityTypr(Object object) {
-        if (object instanceof DTORegUser) {
+        if (object instanceof Users) {
             return "DTORegUser";
-        } else if (object instanceof DTORegCompany) {
+        } else if (object instanceof Company) {
             return "DTORegCompany";
         }
 
