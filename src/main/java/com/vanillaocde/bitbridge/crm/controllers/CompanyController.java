@@ -5,6 +5,7 @@ import com.vanillaocde.bitbridge.crm.model.Company;
 import com.vanillaocde.bitbridge.crm.repositories.CompanyRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,8 @@ public class CompanyController {
     CompanyRepository repository;
 
     @PostMapping
-    public void regCompany(@RequestBody @Valid DTORegCompany data) {
+    public ResponseEntity regCompany(@RequestBody @Valid DTORegCompany data) {
         repository.save(new Company(data));
-
+        return ResponseEntity.ok().build();
     }
 }

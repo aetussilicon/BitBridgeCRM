@@ -1,5 +1,6 @@
 package com.vanillaocde.bitbridge.crm.services;
 
+import com.vanillaocde.bitbridge.crm.dtos.DTORegCompany;
 import com.vanillaocde.bitbridge.crm.model.Company;
 import com.vanillaocde.bitbridge.crm.model.Users;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

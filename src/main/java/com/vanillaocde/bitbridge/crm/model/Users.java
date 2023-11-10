@@ -15,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Users {
 
     @Id
-    @GenericGenerator(name = "gsid", strategy = "com.vanillaocde.bitbridge.crm.services.UserId")
+    @GenericGenerator(name = "gsid", strategy = "com.vanillaocde.bitbridge.crm.services.IdGeneratorService")
     @GeneratedValue(generator = "gsid")
     @Column(name = "gsid")
     private String gsid;
