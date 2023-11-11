@@ -1,10 +1,13 @@
 package com.vanillaocde.bitbridge.crm.controllers;
 
 import  com.vanillaocde.bitbridge.crm.dtos.DTORegUser;
+import com.vanillaocde.bitbridge.crm.dtos.DTOUpdateUser;
 import com.vanillaocde.bitbridge.crm.model.Users;
 import com.vanillaocde.bitbridge.crm.repositories.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +26,17 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    public ResponseEntity<Users> updateUser(@PathVariable String gsid, @RequestBody @Valid DTOUpdateUser data) {
-        repository.updateData(data);
+    public ResponseEntity updateUser(@ResponseBody @Valid DTOUpdateUser data) {
+        if (!repository.existsById(data.gsid)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Users existingUsers = repository.findById(data.gsid).orElse(null);
+        if (existingUsers != null) {
+            repository.save(existingUsers);
+            return ResponseEntity.ok(existingUsers);
+        }
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
 }

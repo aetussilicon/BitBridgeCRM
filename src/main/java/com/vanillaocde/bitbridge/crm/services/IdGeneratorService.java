@@ -1,6 +1,5 @@
 package com.vanillaocde.bitbridge.crm.services;
 
-import com.vanillaocde.bitbridge.crm.dtos.DTORegCompany;
 import com.vanillaocde.bitbridge.crm.model.Company;
 import com.vanillaocde.bitbridge.crm.model.Users;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -27,7 +26,7 @@ public class IdGeneratorService implements IdentifierGenerator {
                 return new IllegalArgumentException("A entidade " + entityType + "é desconhecida");
 
         }
-        //String prefix = "UN";
+        
         Random random = new Random();
         int randomNumber = random.nextInt(10000000, 99999999);
 
