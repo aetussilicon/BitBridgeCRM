@@ -18,7 +18,6 @@ public record DTORegUser(
         String email,
 
         @NotBlank
-        @ValidPassword
         String password,
 
         String username,
